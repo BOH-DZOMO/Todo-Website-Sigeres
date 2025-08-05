@@ -7,7 +7,7 @@ require_once("./includes/header.inc.php");
 </head>
 <body>
    <main>
-    
+
 
    </main>
 <script src="./assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
