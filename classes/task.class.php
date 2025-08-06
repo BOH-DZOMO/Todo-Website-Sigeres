@@ -1,0 +1,47 @@
+<?php
+class Task extends Dbh
+{
+    // private $title;
+    // private $description;
+    // private $deadline;
+    // private $create_;
+
+    public function createTask(int $user_id, string $title, string $description, string $deadline)
+    {
+
+        $query = "INSERT INTO `tasks`(`user_id`, `title`, `description`,`due_date`) VALUES (?,?,?,?)";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($user_id, $title, $description, $deadline));
+    }
+
+    public function editTask(string $title, string $description, string $deadline)
+    {
+
+        $query = "UPDATE `tasks` SET `title`=?, `description`=?,`due_date`=? WHERE id=?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($title, $description, $deadline));
+    }
+
+        public function getTask(int $task_id)
+    {
+
+        $query = "SELECT * FROM `tasks` WHERE `id` = ?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($task_id));
+    }
+
+        public function getAllTasks(int $task_id)
+    {
+
+        $query = "SELECT * FROM `tasks`";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($task_id));
+    }
+        public function deleteTask(int $task_id)
+    {
+
+        $query = "DELETE FROM `tasks` WHERE id =?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($task_id));
+    }
+}

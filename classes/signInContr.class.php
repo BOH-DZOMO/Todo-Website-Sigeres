@@ -34,7 +34,7 @@ class SignInContr extends SignIn
         $result = $this->get_userData($this->email);
         $_SESSION["user_id"] = $result["id"];
         $_SESSION["user_username"] = htmlspecialchars($result["username"]);
-        header("location: ../index.php?login=success");
+        header("location: ../pages/dashboard.php?login=success");
         exit();
     }
 
