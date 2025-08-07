@@ -18,14 +18,14 @@ require_once("./pages/partials/header.inc.php");
             <form action="./includes/signIn.inc.php" method="post">
                <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
                </div>
                <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <input type="email" class="form-control" id="password" placeholder="">
+                  <input type="email" class="form-control" name="password" id="password" placeholder="">
                </div>
                <div class="d-grid gap-2">
-                  <button class="btn btn-primary" style="font-weight: 500;" type="button">Sign In</button>
+                  <button class="btn btn-primary" style="font-weight: 500;" type="button" name="signIn">Sign In</button>
                </div>
             </form>
          </div>
@@ -49,23 +49,22 @@ require_once("./pages/partials/header.inc.php");
          content.innerHTML = `<form action="./includes/signUp.inc.php" method="post">
                <div class="mb-3">
                <label for="name" class="form-label">Name & Surname</label>
-               <input type="email" class="form-control" id="email" placeholder="">
+               <input type="email" class="form-control" name="usernme" id="email" placeholder="">
             </div>
             <div class="mb-3">
                <label for="name" class="form-label">Email</label>
-               <input type="email" class="form-control" id="email" placeholder="name@example.com">
+               <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
             </div>
             <div class="mb-3">
                <label for="password" class="form-label">Password</label>
-               <input type="email" class="form-control" id="password" placeholder="">
+               <input type="email" class="form-control" name="password" id="password" placeholder="">
             </div>
-             <div class="mb-3">
+            <div class="mb-3">
                <label for="password" class="form-label">Confirm Password</label>
-               <input type="email" class="form-control" id="password" placeholder="">
+               <input type="email" class="form-control" name="password_confirm" id="password" placeholder="">
             </div>
-            <!-- <div><button type="button" class="btn btn-primary">Primary</button></div> -->
             <div class="d-grid gap-2">
-               <button class="btn btn-primary" style="font-weight: 500;" type="button">Sign Up</button>
+               <button class="btn btn-primary" style="font-weight: 500;" name="signUp" type="button">Sign Up</button>
             </div>
             </form>`
       })
@@ -77,17 +76,16 @@ require_once("./pages/partials/header.inc.php");
          content.innerHTML = `
                <form action="./includes/signIn.inc.php" method="post">
                <div class="mb-3">
-               <label for="email" class="form-label">Email</label>
-               <input type="email" class="form-control" id="email" placeholder="name@example.com">
-            </div>
-            <div class="mb-3">
-               <label for="password" class="form-label">Password</label>
-               <input type="email" class="form-control" id="password" placeholder="">
-            </div>
-            <!-- <div><button type="button" class="btn btn-primary">Primary</button></div> -->
-            <div class="d-grid gap-2">
-               <button class="btn btn-primary" style="font-weight: 500;" type="button">Sign In</button>
-            </div>
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+               </div>
+               <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="email" class="form-control" name="password" id="password" placeholder="">
+               </div>
+               <div class="d-grid gap-2">
+                  <button class="btn btn-primary" style="font-weight: 500;" type="button" name="signIn">Sign In</button>
+               </div>
             </form>`
       })
    </script>

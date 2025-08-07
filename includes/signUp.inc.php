@@ -1,7 +1,7 @@
 <?php
 require_once "config.session.inc.php";
 include_once "autoloader.inc.php";
-if (isset($_POST["signup"])) {
+if (isset($_POST["signUp"])) {
     //grabbing data
     $username = $_POST["username"];
     $email= $_POST["email"];
