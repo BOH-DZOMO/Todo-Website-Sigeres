@@ -10,12 +10,6 @@ if (isset($_POST["signIn"])) {
 
     // $login = new LoginContr($username, $pwd);
     // $login->loginUser();   
-} elseif (isset($_POST("logout"))) {
-    session_start();
-    session_unset();
-    session_destroy();
-    header("location: ../index.php");
-    die();
 } else {
     header('location:../index.php');
     die();

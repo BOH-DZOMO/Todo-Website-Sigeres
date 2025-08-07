@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+nav{
+    
+    background: linear-gradient(
+    135deg,
+    rgba(60, 60, 175, 0.808),
+    rgb(114, 24, 197)
+  );
+  font-weight: 600;
+  font-size: 1rem;
+}
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding: 0 0.3rem;
+    
+    /* column-gap: 0.5; */
+
+}
+
+nav li:first-child{
+    flex: 1;
+}
+
+.links:hover{
+    background-color: rgb(24, 139, 134);
+    color: #eeeff1;
+}
+.container{
+    flex: 1;
+    background: rgba(155, 155, 230, 0.247);
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    /* padding: 0rem 1rem; */
+    padding: 1.2em 0.7em;
+    height: 100%;
+    width: 100%;
+
+}
+footer{
+    padding: 1rem 1rem 2rem 1rem;
+    background: linear-gradient(
+    135deg,
+    rgba(60, 60, 175, 0.808),
+    rgb(114, 24, 197)
+  );
+    color: white;
+}
+footer p{
+    text-align: center;
+}
+.container h2{
+    margin: 1.5rem 0;
+    text-align: center;
+    color: #0d6efd;
+}
+section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 2rem;
+}
+section .card{
+    padding: 1rem 2rem 2rem 2rem;
+    min-width: 20rem;
+    text-align: center;
+    height: fit-content;
+    background: white;
+    border-radius: 5px;
+}
+
+section p{
+    font-size: 4rem;
+    font-weight: 400;
+    padding: 1rem;
+}
+
+section h4{
+    color: #0d6efd;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+
+/* create task.php */
+
+.card-container{
+    flex: 1;
+    background: rgba(155, 155, 230, 0.247);
+    display: flex;
+    justify-content: center;
+}
+.task-card{
+     max-width: 25rem;
+  height: fit-content;
+  background: white;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 10rem;
+}
+
+.form-label{
+    font-weight: 500;
+}
+
+div h4{
+    color: #0d6efd;
+    font-weight: 600;
+}

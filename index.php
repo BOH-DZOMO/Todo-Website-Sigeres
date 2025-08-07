@@ -1,6 +1,6 @@
 <?php
 $title = "Todo Site";
-require_once("./pages/partials/header.inc.php");
+require_once("./pages/partials/header.par.php");
 ?>
 <title>Todo Site</title>
 <link rel="stylesheet" href="./assets/css/main.css">

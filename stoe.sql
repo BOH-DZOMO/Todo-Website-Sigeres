@@ -16,6 +16,7 @@ CREATE TABLE `users` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255)
                 use random_bytes() and encode it with bin2hex()
                 You don't need a constructor function for most classes ,unless you want properties to be  
                 Its preferable to pass the value of the form to the methods and not class(no constructor)
+                logout shouldf be acxcessible through form
 
 
 //
