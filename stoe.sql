@@ -16,3 +16,41 @@ CREATE TABLE `users` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255)
                 use random_bytes() and encode it with bin2hex()
                 You don't need a constructor function for most classes ,unless you want properties to be  
                 Its preferable to pass the value of the form to the methods and not class(no constructor)
+
+
+//
+<div class="mb-3">
+               <label for="email" class="form-label">Email</label>
+               <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+               <label for="password" class="form-label">Password</label>
+               <input type="email" class="form-control" id="password" placeholder="">
+            </div>
+            <!-- <div><button type="button" class="btn btn-primary">Primary</button></div> -->
+            <div class="d-grid gap-2">
+               <button class="btn btn-primary" style="font-weight: 500;" type="button">Sign In</button>
+            </div>
+
+
+//
+<div class="mb-3">
+               <label for="name" class="form-label">Name & Surname</label>
+               <input type="email" class="form-control" id="email" placeholder="">
+            </div>
+            <div class="mb-3">
+               <label for="name" class="form-label">Email</label>
+               <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+               <label for="password" class="form-label">Password</label>
+               <input type="email" class="form-control" id="password" placeholder="">
+            </div>
+             <div class="mb-3">
+               <label for="password" class="form-label">Confirm Password</label>
+               <input type="email" class="form-control" id="password" placeholder="">
+            </div>
+            <!-- <div><button type="button" class="btn btn-primary">Primary</button></div> -->
+            <div class="d-grid gap-2">
+               <button class="btn btn-primary" style="font-weight: 500;" type="button">Sign Up</button>
+            </div>

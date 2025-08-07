@@ -8,40 +8,45 @@ class Task extends Dbh
 
     public function createTask(int $user_id, string $title, string $description, string $deadline)
     {
-
         $query = "INSERT INTO `tasks`(`user_id`, `title`, `description`,`due_date`) VALUES (?,?,?,?)";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($user_id, $title, $description, $deadline));
+        return $stmt;
+        $stmt = null;
     }
 
     public function editTask(string $title, string $description, string $deadline)
     {
-
         $query = "UPDATE `tasks` SET `title`=?, `description`=?,`due_date`=? WHERE id=?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($title, $description, $deadline));
+        return $stmt;
+        $stmt = null;
     }
 
         public function getTask(int $task_id)
     {
-
         $query = "SELECT * FROM `tasks` WHERE `id` = ?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
+        $stmt->fetch();
+        $stmt = null;
     }
 
-        public function getAllTasks(int $task_id)
+        public function getAllTasks()
     {
-
         $query = "SELECT * FROM `tasks`";
         $stmt = $this->connect()->prepare($query);
-        $stmt->execute(array($task_id));
+        $stmt->execute();
+         $stmt->fetchAll();
+        $stmt = null;
     }
         public function deleteTask(int $task_id)
     {
-
         $query = "DELETE FROM `tasks` WHERE id =?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
+        return $stmt;
+        $stmt = null;
     }
 }
