@@ -27,10 +27,10 @@ CREATE TABLE `users` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255)
                </div>
                <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <input type="email" class="form-control" name="password" id="password" placeholder="">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="">
                </div>
                <div class="d-grid gap-2">
-                  <button class="btn btn-primary" style="font-weight: 500;" type="button" name="signIn">Sign In</button>
+                  <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="signIn">Sign In</button>
                </div>
             </form>
 
@@ -39,7 +39,7 @@ CREATE TABLE `users` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255)
 <form action="./includes/signUp.inc.php" method="post">
                <div class="mb-3">
                <label for="name" class="form-label">Name & Surname</label>
-               <input type="email" class="form-control" name="usernme" id="email" placeholder="">
+               <input type="text" class="form-control" name="username" id="email" placeholder="">
             </div>
             <div class="mb-3">
                <label for="name" class="form-label">Email</label>
@@ -47,13 +47,13 @@ CREATE TABLE `users` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255)
             </div>
             <div class="mb-3">
                <label for="password" class="form-label">Password</label>
-               <input type="email" class="form-control" name="password" id="password" placeholder="">
+               <input type="password" class="form-control" name="password" id="password" placeholder="">
             </div>
             <div class="mb-3">
                <label for="password" class="form-label">Confirm Password</label>
-               <input type="email" class="form-control" name="password_confirm" id="password" placeholder="">
+               <input type="password" class="form-control" name="password_confirm" id="password" placeholder="">
             </div>
             <div class="d-grid gap-2">
-               <button class="btn btn-primary" style="font-weight: 500;" name="signUp" type="button">Sign Up</button>
+               <button class="btn btn-primary" style="font-weight: 500;" name="signUp" type="submit">Sign Up</button>
             </div>
             </form>

@@ -29,7 +29,7 @@ class Task extends Dbh
         $query = "SELECT * FROM `tasks` WHERE `id` = ?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
-        $stmt->fetch();
+        return $stmt->fetch();
         $stmt = null;
     }
 
@@ -38,7 +38,7 @@ class Task extends Dbh
         $query = "SELECT * FROM `tasks`";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute();
-         $stmt->fetchAll();
+        return $stmt->fetchAll();
         $stmt = null;
     }
         public function deleteTask(int $task_id)

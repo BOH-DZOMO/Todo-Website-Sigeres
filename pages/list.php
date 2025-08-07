@@ -3,7 +3,7 @@ $title = "Todo Site";
 require_once("./partials/header2.par.php");
 ?>
 <title>Todo Site</title>
-<link rel="stylesheet" href="../assets/css/dashboard.css">
+<link rel="stylesheet" href="../assets/css/list.css">
 </head>
 
 <body>
@@ -16,8 +16,40 @@ require_once("./partials/header2.par.php");
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
             </ul>
         </nav>
-        <div class="">
-           
+        <div class="container">
+            <h4>List of Tasks</h4>
+            <section>
+                <form action="" method="post">
+                    <input type="date" name="first_date" id="">
+                    <input type="date" name="last_date" id="">
+                    <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="filter">Filter</button>
+                </form>
+            </section>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Deadline</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-success">Complete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
         <footer>

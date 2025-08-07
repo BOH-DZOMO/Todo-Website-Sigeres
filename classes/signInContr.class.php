@@ -25,7 +25,7 @@ class SignInContr extends SignIn
         //review
         if ($this->signInErrors) {
             $_SESSION["errors_login"] = $this->signInErrors;
-            header("location: ../login-page.php");
+            header("location: ../index.php");
 
             exit();
         }
