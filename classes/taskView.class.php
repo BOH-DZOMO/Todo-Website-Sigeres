@@ -6,6 +6,7 @@ class TaskView extends Task{
     }
         public function readAll(){
         $data = $this->getAllTasks();
+        return $data;
         foreach ($data as $key => $value) {
             echo "$key => $value <br>";
             // echo `  <table class="table">
@@ -35,6 +36,7 @@ class TaskView extends Task{
         }
     }
 }
+
 
 
           

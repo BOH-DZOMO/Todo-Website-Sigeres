@@ -1,4 +1,7 @@
 <?php
+require_once "../includes/config.session.inc.php";
+require_once "../includes/autoloader.inc.php";
+$view = new TaskView();
 $title = "Todo Site";
 require_once("./partials/header2.par.php");
 ?>
@@ -11,8 +14,8 @@ require_once("./partials/header2.par.php");
         <nav>
             <ul>
                 <li><a href="">TachesApp</a></li>
-                <li><a href="" class="links">Create Tasks</a></li>
-                <li><a href="" class="links">List Tasks</a></li>
+                <li><a href="./create_task.php" class="links">Create Tasks</a></li>
+                <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
             </ul>
         </nav>
@@ -26,30 +29,9 @@ require_once("./partials/header2.par.php");
                 </form>
             </section>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Deadline</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-success">Complete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <?php
+
+            ?>
 
         </div>
         <footer>

@@ -5,6 +5,9 @@ function myAutoloader($clasname){
     if (strpos($url, "includes") !== false) {
         $path = "../classes/";
     }
+    elseif (strpos($url, "pages") !== false) {
+        $path = "../classes/";
+    }
     else {
         $path = "classes/";
     }

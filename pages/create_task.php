@@ -11,8 +11,8 @@ require_once("./partials/header2.par.php");
         <nav>
             <ul>
                 <li><a href="">TachesApp</a></li>
-                <li><a href="" class="links">Create Tasks</a></li>
-                <li><a href="" class="links">List Tasks</a></li>
+                <li><a href="./create_task.php" class="links">Create Tasks</a></li>
+                <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
             </ul>
         </nav>
@@ -21,19 +21,19 @@ require_once("./partials/header2.par.php");
                 <h4>Create a new Task</h4>
                 <form action="../includes/task.inc.php" method="post">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Name of task</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" rows="3"></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="deadline" class="form-label">Deadline</label>
                         <input type="date" class="form-control" name="deadline" id="deadline" placeholder="" min="">
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary" style="font-weight: 500;" type="button" name="create_task">Create Task</button>
+                        <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="create_task">Create Task</button>
                     </div>
                 </form>
             </div>

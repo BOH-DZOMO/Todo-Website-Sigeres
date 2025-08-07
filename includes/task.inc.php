@@ -7,7 +7,8 @@ if (isset($_POST["create_task"])) {
     $description = $_POST["description"];
     $deadline = $_POST["deadline"];
 
-    if (allFieldsFilled($title, $description)) {
+
+    if (allFieldsFilled([$title, $description])) {
         $create_task = new taskContr();
         $create_task->create($_SESSION["user_id"], $title, $description, $deadline);
     } else {

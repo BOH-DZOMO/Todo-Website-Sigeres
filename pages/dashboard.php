@@ -11,8 +11,8 @@ require_once("../pages/partials/header.par.php");
         <nav>
             <ul>
                 <li><a href="">TachesApp</a></li>
-                <li><a href="" class="links">Create Tasks</a></li>
-                <li><a href="" class="links">List Tasks</a></li>
+                <li><a href="./create_task.php" class="links">Create Tasks</a></li>
+                <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
             </ul>
         </nav>
