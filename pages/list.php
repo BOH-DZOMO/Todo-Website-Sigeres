@@ -54,6 +54,7 @@ require_once("./partials/header2.par.php");
                 $startDate = $_POST["first_date"];
                 $endDate = $_POST["last_date"];
                 if (allFieldsFilled([$startDate, $endDate])) {
+                    echo "<script>alert('$startDate $endDate')</script>";
                     $view->readAll($_SESSION["user_id"],escape($startDate),escape($endDate));
                 } else {
                     header('location: ../pages/list.php ');

@@ -114,7 +114,7 @@ section h4{
     align-items: center;
 }
 .task-card{
-     max-width: 25rem;
+     min-width: 20rem;
   height: fit-content;
   background: white;
   padding: 1rem 1.5rem 1.5rem 1.5rem;

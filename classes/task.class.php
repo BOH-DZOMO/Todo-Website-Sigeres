@@ -58,11 +58,14 @@ class Task extends Dbh
         return $stmt;
         $stmt = null;
     }
-
-    public function filter_by_date(string $start,string $end){
-        $query= "SELECT * FROM `tasks` WHERE due_date BETWEEN ? AND  ?";
+//view access
+    protected function filter_by_date(string $start,string $end, int $user_id){
+        $query= "SELECT * FROM `tasks` WHERE due_date BETWEEN :startDate AND :endDate AND user_id= :id";
          $stmt = $this->connect()->prepare($query);
-        $stmt->execute(array($start,$end));
+         $stmt->bindParam(":startDate",$start);
+         $stmt->bindParam(":endDate", $end);
+         $stmt->bindParam(":id", $user_id);
+        $stmt->execute();
          return $stmt->fetchAll();
         $stmt = null;
     }
