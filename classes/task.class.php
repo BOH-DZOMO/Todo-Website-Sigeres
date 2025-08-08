@@ -69,4 +69,12 @@ class Task extends Dbh
          return $stmt->fetchAll();
         $stmt = null;
     }
+        protected function getDashboardData(int $user_id){
+        $query= "SELECT `is_done`, COUNT(*) AS type FROM `tasks` WHERE user_id = :id GROUP BY is_done ";
+         $stmt = $this->connect()->prepare($query);
+         $stmt->bindParam(":id", $user_id);
+        $stmt->execute();
+         return $stmt->fetchAll();
+        $stmt = null;
+    }
 }

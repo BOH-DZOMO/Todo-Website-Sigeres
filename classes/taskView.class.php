@@ -69,4 +69,32 @@ class TaskView extends Task
         echo " </tbody>
                 </table>";
     }
+    public function dashboard($user_id){
+        $data = $this->getDashboardData($user_id);
+        if (empty($data)) {
+            $completed = 0;
+            $todo = 0;
+            $total = 0;
+        }
+        else {
+            $completed = $data[1]["type"];
+            $todo = $data[0]["type"];
+            $total = $completed+$todo;
+        }
+        
+        echo "<section>
+                    <div class='card'>
+                        <h4>Total Tasks</h4>
+                        <p class='total_task text-dark'>$total</p>
+                    </div>
+                    <div class='card'>
+                        <h4>Completed Tasks</h4>
+                        <p class='completed_task text-success'>$completed</p>
+                    </div>
+                    <div class='card'>
+                        <h4>Todo</h4>
+                        <p class='todo text-warning'>$todo</p>
+                    </div>
+             </section>";
+    }
 }
