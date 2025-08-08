@@ -1,6 +1,11 @@
 <?php
 $title = "Todo Site";
 require_once("../pages/partials/header.par.php");
+require_once "../includes/config.session.inc.php";
+require_once "../includes/autoloader.inc.php";
+if (!isset($_SESSION)) {
+    header("location: ../index.php");
+}
 ?>
 <title>Todo Site</title>
 <link rel="stylesheet" href="../assets/css/dashboard.css">

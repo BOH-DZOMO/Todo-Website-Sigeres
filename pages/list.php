@@ -1,6 +1,9 @@
 <?php
 require_once "../includes/config.session.inc.php";
 require_once "../includes/autoloader.inc.php";
+if (!isset($_SESSION["user_id"])) {
+    header("location: ../index.php");
+}
 $view = new TaskView();
 $title = "Todo Site";
 require_once("./partials/header2.par.php");
@@ -30,7 +33,8 @@ require_once("./partials/header2.par.php");
             </section>
 
             <?php
-
+                // var_dump($view->readAll());
+                $view->readAll($_SESSION["user_id"]);
             ?>
 
         </div>

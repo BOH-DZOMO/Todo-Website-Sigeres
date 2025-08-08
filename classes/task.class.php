@@ -15,11 +15,11 @@ class Task extends Dbh
         $stmt = null;
     }
 
-    public function editTask(string $title, string $description, string $deadline)
+    public function editTask(int $task_id, string $title, string $description, string $deadline)
     {
         $query = "UPDATE `tasks` SET `title`=?, `description`=?,`due_date`=? WHERE id=?";
         $stmt = $this->connect()->prepare($query);
-        $stmt->execute(array($title, $description, $deadline));
+        $stmt->execute(array($title, $description, $deadline, $task_id));
         return $stmt;
         $stmt = null;
     }
@@ -29,21 +29,30 @@ class Task extends Dbh
         $query = "SELECT * FROM `tasks` WHERE `id` = ?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
-        return $stmt->fetch();
+        return $stmt->fetchAll();
         $stmt = null;
     }
 
-        public function getAllTasks()
+        public function getAllTasks($user_id)
     {
-        $query = "SELECT * FROM `tasks`";
+        $query = "SELECT * FROM `tasks` WHERE user_id = ?";
         $stmt = $this->connect()->prepare($query);
-        $stmt->execute();
+        $stmt->execute(array($user_id));
         return $stmt->fetchAll();
         $stmt = null;
     }
         public function deleteTask(int $task_id)
     {
         $query = "DELETE FROM `tasks` WHERE id =?";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute(array($task_id));
+        return $stmt;
+        $stmt = null;
+    }
+
+            public function set_complete(int $task_id)
+    {
+        $query = "UPDATE `tasks` SET `is_done`=1 WHERE id=?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
         return $stmt;
