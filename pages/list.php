@@ -6,6 +6,21 @@ if (!isset($_SESSION["user_id"])) {
 }
 $view = new TaskView();
 $title = "Todo Site";
+function allFieldsFilled(array $data): bool
+{
+    foreach ($data as $key => $value) {
+        if (empty($value) && $value !== '0' && $value !== 0) {
+            return false;
+        }
+    }
+    return true;
+}
+    function escape($data)
+    {
+        $data = trim($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 require_once("./partials/header2.par.php");
 ?>
 <!-- <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css"> -->
@@ -26,7 +41,7 @@ require_once("./partials/header2.par.php");
         <div class="container">
             <h4>List of Tasks</h4>
             <section>
-                <form action="../includes/task.inc.php" method="post" class="gx-5">
+                <form action="./list.php" method="post" class="">
                     <input type="date" name="first_date" id="">
                     <input type="date" name="last_date" id="">
                     <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="filter">Filter</button>
@@ -34,8 +49,18 @@ require_once("./partials/header2.par.php");
             </section>
 
             <?php
-                // var_dump($view->readAll());
+            // var_dump($view->readAll());
+            if (isset($_POST["filter"])) {
+                $startDate = $_POST["first_date"];
+                $endDate = $_POST["last_date"];
+                if (allFieldsFilled([$startDate, $endDate])) {
+                    $view->readAll($_SESSION["user_id"],escape($startDate),escape($endDate));
+                } else {
+                    header('location: ../pages/list.php ');
+                }
+            } else {
                 $view->readAll($_SESSION["user_id"]);
+            }
             ?>
 
         </div>
@@ -55,8 +80,10 @@ require_once("./partials/header2.par.php");
     <script src="../assets/jquery-ui-1.13.3.custom/external/jquery/jquery.js"></script>
     <script src="../assets/DataTables/datatables.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable();
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                responsive: true
+            });
         });
     </script>
 </body>

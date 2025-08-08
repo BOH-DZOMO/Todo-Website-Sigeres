@@ -51,6 +51,17 @@ elseif (isset($_POST["complete_task"])) {
         header('location: ../pages/list.php ');
     }
 }
+// elseif (isset($_POST["filter"])) {
+//     $startDate = $_POST["first_date"];
+//     $endDate = $_POST["last_date"];
+//      if (allFieldsFilled([$startDate,$endDate])) {
+//         $filter = new taskContr();
+//         $filter->(escape($startDate),escape($endDate));   
+//     }
+//     else {
+//         header('location: ../pages/list.php ');
+//     }
+// }
 
 else {
     header('location:../index.php?source=task.inc');

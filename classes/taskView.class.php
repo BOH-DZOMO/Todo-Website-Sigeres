@@ -7,8 +7,12 @@ class TaskView extends Task
         return $this->getTask($task_id);
     }
 
-    public function readAll($user_id)
+    public function readAll($user_id,$start=null,$end=null)
     {
+        $data = null;
+        if (isset($start) && isset($end)) {
+            $data = $this->filter_by_date($start,$end);
+        }
         $data = $this->getAllTasks($user_id);
         // return $data;
         $c = 1;
