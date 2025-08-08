@@ -12,13 +12,8 @@ class TaskView extends Task
         $data = $this->getAllTasks($user_id);
         // return $data;
         $c = 1;
-        foreach ($data as $data => $value) {
-            if ($value['is_done'] === 0) {
-                $state = "To-do";
-            } else {
-                $state = "Completed";
-            }
-            echo "<table class='table'>
+        $cursor = null;
+        echo "<table class='table' id='myTable'>
                 <thead>
                     <tr>
                         <th scope='col'>#</th>
@@ -29,12 +24,29 @@ class TaskView extends Task
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                ";
+        foreach ($data as $data => $value) {
+            if ($value['is_done'] === 0) {
+                $state = "<button type='button' class='btn btn-warning'>To-do</button>";
+            } else {
+                $state = "<button type='button' class='btn btn-success'>Completed</button>";
+            }
+            if ($value['is_done'] === 1) {
+                $type = "button";
+                $color = "secondary";
+            }
+            else {
+                $type = "submit";
+                $color = "success";
+                $cursor = "cursor: none;";
+            }
+            echo " <tr>
                         <th scope='row'>$c</th>
                         <td>{$value['title']}</td>
                         <td>{$value['due_date']}</td>
-                        <td><span class='state'>$state</span></td>
+                        <td><div class='d-flex justify-content-center'>$state</div></td>
                         <td>
+                        <div class='action_bar'>
                         <form action='../pages/edit-page.php' method='post'>
                         <input type='hidden' name='task_id' value='{$value["id"]}' >
                         <button type='submit' class='btn btn-primary' name='edit_page'>Edit</button>
@@ -45,13 +57,15 @@ class TaskView extends Task
                         </form>
                         <form action='../includes/task.inc.php' method='post'>
                         <input type='hidden' name='task_id' value='{$value["id"]}' >
-                        <button type='submit' class='btn btn-danger' name='complete_task'>Complete</button>
+                        <button type='$type' class='btn btn-$color' style='$cursor' name='complete_task'>Complete</button>
                         </form>
+                        </div>
                         </td>
                     </tr>
-                </tbody>
-            </table>";
-            $c+=1;
+                    ";
+            $c += 1;
         }
+        echo " </tbody>
+                </table>";
     }
 }

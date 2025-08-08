@@ -8,6 +8,7 @@ $view = new TaskView();
 $title = "Todo Site";
 require_once("./partials/header2.par.php");
 ?>
+<!-- <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css"> -->
 <title>Todo Site</title>
 <link rel="stylesheet" href="../assets/css/list.css">
 </head>
@@ -16,7 +17,7 @@ require_once("./partials/header2.par.php");
     <main>
         <nav>
             <ul>
-                <li><a href="">TachesApp</a></li>
+                <li><a href="./dashboard.php">TachesApp</a></li>
                 <li><a href="./create_task.php" class="links">Create Tasks</a></li>
                 <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
@@ -25,7 +26,7 @@ require_once("./partials/header2.par.php");
         <div class="container">
             <h4>List of Tasks</h4>
             <section>
-                <form action="" method="post">
+                <form action="../includes/task.inc.php" method="post" class="gx-5">
                     <input type="date" name="first_date" id="">
                     <input type="date" name="last_date" id="">
                     <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="filter">Filter</button>
@@ -51,7 +52,12 @@ require_once("./partials/header2.par.php");
     </main>
     <script src="../assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     <script src="../assets/Vendor/fontawesome/js/all.min.js"></script>
+    <script src="../assets/jquery-ui-1.13.3.custom/external/jquery/jquery.js"></script>
+    <script src="../assets/DataTables/datatables.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
     </script>
 </body>
 

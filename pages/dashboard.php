@@ -1,9 +1,9 @@
 <?php
 $title = "Todo Site";
-require_once("../pages/partials/header.par.php");
+require_once("../pages/partials/header2.par.php");
 require_once "../includes/config.session.inc.php";
 require_once "../includes/autoloader.inc.php";
-if (!isset($_SESSION)) {
+if (!isset($_SESSION["user_id"])) {
     header("location: ../index.php");
 }
 ?>
@@ -15,7 +15,7 @@ if (!isset($_SESSION)) {
     <main>
         <nav>
             <ul>
-                <li><a href="">TachesApp</a></li>
+                <li><a href="./dashboard.php">TachesApp</a></li>
                 <li><a href="./create_task.php" class="links">Create Tasks</a></li>
                 <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
@@ -26,15 +26,15 @@ if (!isset($_SESSION)) {
             <section>
                 <div class="card">
                     <h4>Total Tasks</h4>
-                    <p class="total_task">1</p>
+                    <p class="total_task text-dark">1</p>
                 </div>
                 <div class="card">
                     <h4>Completed Tasks</h4>
-                    <p class="completed_task">2</p>
+                    <p class="completed_task text-success">2</p>
                 </div>
                 <div class="card">
                     <h4>Todo</h4>
-                    <p class="todo">3</p>
+                    <p class="todo text-warning">3</p>
                 </div>
             </section>
 

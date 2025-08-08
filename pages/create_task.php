@@ -3,6 +3,9 @@ $title = "Todo Site";
 require_once("./partials/header2.par.php");
 require_once "../includes/config.session.inc.php";
 require_once "../includes/autoloader.inc.php";
+if (!isset($_SESSION["user_id"])) {
+    header("location: ../index.php");
+}
 ?>
 <title>Todo Site</title>
 <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -12,7 +15,7 @@ require_once "../includes/autoloader.inc.php";
     <main>
         <nav>
             <ul>
-                <li><a href="">TachesApp</a></li>
+                <li><a href="./dashboard.php">TachesApp</a></li>
                 <li><a href="./create_task.php" class="links">Create Tasks</a></li>
                 <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>

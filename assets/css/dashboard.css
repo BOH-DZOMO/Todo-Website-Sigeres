@@ -102,6 +102,8 @@ section h4{
 }
 
 
+
+
 /* create task.php */
 
 .card-container{
@@ -109,6 +111,7 @@ section h4{
     background: rgba(155, 155, 230, 0.247);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .task-card{
      max-width: 25rem;
@@ -116,7 +119,7 @@ section h4{
   background: white;
   padding: 1rem 1.5rem 1.5rem 1.5rem;
   border-radius: 15px;
-  margin-bottom: 10rem;
+    margin-top: 1rem;
 }
 
 .form-label{

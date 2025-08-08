@@ -20,7 +20,7 @@ if (isset($_POST["task_id"])) {
     <main>
         <nav>
             <ul>
-                <li><a href="">TachesApp</a></li>
+                <li><a href="./dashboard.php">TachesApp</a></li>
                 <li><a href="./create_task.php" class="links">Create Tasks</a></li>
                 <li><a href="./list.php" class="links">List Tasks</a></li>
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
