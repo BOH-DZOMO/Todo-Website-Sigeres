@@ -6,6 +6,7 @@ require_once "../includes/autoloader.inc.php";
 if (!isset($_SESSION["user_id"])) {
     header("location: ../index.php");
 }
+$view = new TaskView();
 ?>
 <title>Todo Site</title>
 <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -21,22 +22,12 @@ if (!isset($_SESSION["user_id"])) {
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
             </ul>
         </nav>
-        <div class="container">
+                <div class="container">
             <h2>Welcome to the dashboard</h2>
-            <section>
-                <div class="card">
-                    <h4>Total Tasks</h4>
-                    <p class="total_task text-dark">1</p>
-                </div>
-                <div class="card">
-                    <h4>Completed Tasks</h4>
-                    <p class="completed_task text-success">2</p>
-                </div>
-                <div class="card">
-                    <h4>Todo</h4>
-                    <p class="todo text-warning">3</p>
-                </div>
-            </section>
+            <?php 
+             $view->dashboard($_SESSION["user_id"]);
+
+            ?>
 
         </div>
         <footer>

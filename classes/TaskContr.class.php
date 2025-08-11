@@ -7,7 +7,7 @@ class TaskContr extends Task{
             $deadline =  $date->format("Y-m-d");
         }
         $this->createTask($user_id,$title,$description,$deadline);
-         header("location: ../pages/list.php?post=success");
+         header("location: ../pages/list.php?task=success");
         exit();
 
     }

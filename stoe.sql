@@ -18,6 +18,8 @@ CREATE TABLE `users` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255)
                 Its preferable to pass the value of the form to the methods and not class(no constructor)
                 logout shouldf be acxcessible through form
 
+                ALTER TABLE `tasks` ADD `delete_status` BOOLEAN NOT NULL DEFAULT FALSE AFTER `created_at`; 
+
 
 //
 <form action="./includes/signIn.inc.php" method="post">

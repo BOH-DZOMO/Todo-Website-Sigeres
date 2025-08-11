@@ -24,6 +24,9 @@ require_once("./pages/partials/header.par.php");
                   <label for="password" class="form-label">Password</label>
                   <input type="password" class="form-control" name="password" id="password" placeholder="">
                </div>
+               <div id="error_log">
+
+               </div>
                <div class="d-grid gap-2">
                   <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="signIn">Sign In</button>
                </div>
@@ -36,7 +39,23 @@ require_once("./pages/partials/header.par.php");
    <script>
       let signInBtn = document.getElementById("signin");
       let signUpBtn = document.getElementById("signup");
-      let content = document.getElementById("content")
+      let content = document.getElementById("content");
+      
+            //    content.innerHTML = `
+            //    <form action="./includes/signIn.inc.php" method="post">
+            //    <div class="mb-3">
+            //       <label for="email" class="form-label">Email</label>
+            //       <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+            //    </div>
+            //    <div class="mb-3">
+            //       <label for="password" class="form-label">Password</label>
+            //       <input type="password" class="form-control" name="password" id="password" placeholder="">
+            //    </div>
+            //    <div class="d-grid gap-2">
+            //       <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="signIn">Sign In</button>
+            //    </div>
+            // </form>`
+      let error_log = document.getElementById("error_log");
 
       signInBtn.classList.add("focus");
 

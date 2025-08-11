@@ -11,9 +11,11 @@ class TaskView extends Task
     {
         $data = null;
         if (isset($start) && isset($end)) {
-            $data = $this->filter_by_date($start,$end);
+            $data = $this->filter_by_date($start,$end,$user_id);
         }
-        $data = $this->getAllTasks($user_id);
+        else {
+            $data = $this->getAllTasks($user_id);
+        }
         // return $data;
         $c = 1;
         $cursor = null;
@@ -56,12 +58,12 @@ class TaskView extends Task
                         <button type='submit' class='btn btn-primary' name='edit_page'>Edit</button>
                         </form>
                         <form action='../includes/task.inc.php' method='post'>
-                        <input type='hidden' name='task_id' value='{$value["id"]}' >
-                        <button type='submit' class='btn btn-danger' name='delete_task'>Delete</button>
+                        <input type='hidden' name='task_id' value='{$value["id"]}'>
+                        <button type='submit' class='btn btn-danger' id='delete' name='delete_task'>Delete</button>
                         </form>
                         <form action='../includes/task.inc.php' method='post'>
                         <input type='hidden' name='task_id' value='{$value["id"]}' >
-                        <button type='$type' class='btn btn-$color' style='$cursor' name='complete_task'>Complete</button>
+                        <button type='$type' class='btn btn-$color' name='complete_task'>Complete</button>
                         </form>
                         </div>
                         </td>
@@ -72,4 +74,33 @@ class TaskView extends Task
         echo " </tbody>
                 </table>";
     }
+        public function dashboard($user_id){
+        $data = $this->getDashboardData($user_id);
+        if (empty($data)) {
+            $completed = 0;
+            $todo = 0;
+            $total = 0;
+        }
+        else {
+            $completed = $data[1]["type"] ?? 0;
+            $todo = $data[0]["type"] ?? 0;
+            $total = $completed+$todo;
+        }
+        
+        echo "<section>
+                    <div class='card'>
+                        <h4>Total Tasks</h4>
+                        <p class='total_task text-dark'>$total</p>
+                    </div>
+                    <div class='card'>
+                        <h4>Completed Tasks</h4>
+                        <p class='completed_task text-success'>$completed</p>
+                    </div>
+                    <div class='card'>
+                        <h4>Todo</h4>
+                        <p class='todo text-warning'>$todo</p>
+                    </div>
+             </section>";
+        }
+
 }

@@ -15,12 +15,12 @@ function allFieldsFilled(array $data): bool
     }
     return true;
 }
-    function escape($data)
-    {
-        $data = trim($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+function escape($data)
+{
+    $data = trim($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 require_once("./partials/header2.par.php");
 ?>
 <!-- <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css"> -->
@@ -39,6 +39,14 @@ require_once("./partials/header2.par.php");
             </ul>
         </nav>
         <div class="container">
+            <?php
+            if (isset($_GET["task"]) && $_GET["task"] == "success") {
+                echo '<div class="alert alert-success" role="alert">
+  Task created succesfully
+</div>
+';
+            }
+            ?>
             <h4>List of Tasks</h4>
             <section>
                 <form action="./list.php" method="post" class="">
@@ -54,7 +62,7 @@ require_once("./partials/header2.par.php");
                 $startDate = $_POST["first_date"];
                 $endDate = $_POST["last_date"];
                 if (allFieldsFilled([$startDate, $endDate])) {
-                    $view->readAll($_SESSION["user_id"],escape($startDate),escape($endDate));
+                    $view->readAll($_SESSION["user_id"], escape($startDate), escape($endDate));
                 } else {
                     header('location: ../pages/list.php ');
                 }
@@ -73,6 +81,7 @@ require_once("./partials/header2.par.php");
                 <span class=""></span>
             </div>
             <p><span>@</span> 2025 TachesApp. Tous droits reserves.</p>
+            <p id="here">here</p>
         </footer>
     </main>
     <script src="../assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
@@ -85,6 +94,10 @@ require_once("./partials/header2.par.php");
                 responsive: true
             });
         });
+        
+        let btn = document.getElementById("here");
+        here.innerText = "bigger"
+        
     </script>
 </body>
 

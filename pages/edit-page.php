@@ -10,6 +10,7 @@ $data = null;
 if (isset($_POST["task_id"])) {
     $old_data = new TaskView();
     $data = $old_data->read($_POST["task_id"]);
+    $header = "Edit Task";
 }
 ?>
 <title>Todo Site</title>
@@ -28,21 +29,38 @@ if (isset($_POST["task_id"])) {
         </nav>
         <div class="card-container">
             <div class="task-card">
-                <h4>Create a new Task</h4>
+                <?php
+                if (isset($_GET["error"]) && $_GET["error"] == "supdate_task") {
+                    echo '<div class="alert alert-danger" role="alert">
+  Error occured
+</div>
+';
+                }
+                ?>
+                <h4>
+                    <?php
+                    if ($header) {
+                        echo $header;
+                    }
+                    else{
+                        echo "Create a new Task";
+                    }
+                    ?>
+                </h4>
                 <form action="../includes/task.inc.php" method="post">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="" value="<?php echo $data[0]['title'];?>">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="" value="<?php echo $data[0]['title']; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="3"><?php echo $data[0]["description"]?></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="3"><?php echo $data[0]["description"] ?></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="deadline" class="form-label">Deadline</label>
-                        <input type="date" class="form-control" name="deadline" id="deadline" placeholder="" value="<?php echo $data[0]["due_date"]?>">
+                        <input type="date" class="form-control" name="deadline" id="deadline" placeholder="" value="<?php echo $data[0]["due_date"] ?>">
                     </div>
-                    <input type="hidden" name="task_id" value="<?php echo $data[0]["id"]?>">
+                    <input type="hidden" name="task_id" value="<?php echo $data[0]["id"] ?>">
                     <div class="d-grid gap-2">
                         <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="edit_task">Edit Task</button>
                     </div>

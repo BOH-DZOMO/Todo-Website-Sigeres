@@ -26,7 +26,7 @@ class Task extends Dbh
 
         protected function getTask(int $task_id)
     {
-        $query = "SELECT * FROM `tasks` WHERE `id` = ?";
+        $query = "SELECT * FROM `tasks` WHERE `id` = ? AND delete_status = 0";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
         return $stmt->fetchAll();
@@ -35,7 +35,7 @@ class Task extends Dbh
 
         protected function getAllTasks($user_id)
     {
-        $query = "SELECT * FROM `tasks` WHERE user_id = ?";
+        $query = "SELECT * FROM `tasks` WHERE user_id = ? AND delete_status = 0";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($user_id));
         return $stmt->fetchAll();
@@ -43,7 +43,7 @@ class Task extends Dbh
     }
         protected function deleteTask(int $task_id)
     {
-        $query = "DELETE FROM `tasks` WHERE id =?";
+        $query = "UPDATE `tasks` SET `delete_status`= 1 WHERE id = ?";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute(array($task_id));
         return $stmt;
@@ -59,10 +59,23 @@ class Task extends Dbh
         $stmt = null;
     }
 
-    public function filter_by_date(string $start,string $end){
-        $query= "SELECT * FROM `tasks` WHERE due_date BETWEEN ? AND  ?";
+    //view access
+    protected function filter_by_date(string $start,string $end, int $user_id){
+        $query= "SELECT * FROM `tasks` WHERE due_date BETWEEN :startDate AND :endDate AND user_id= :id AND delete_status = 0";
+        $stmt = $this->connect()->prepare($query);
+         $stmt->bindParam(":startDate",$start);
+         $stmt->bindParam(":endDate", $end);
+         $stmt->bindParam(":id", $user_id);
+        $stmt->execute();
+         return $stmt->fetchAll();
+        $stmt = null;
+    }
+
+    protected function getDashboardData(int $user_id){
+        $query= "SELECT `is_done`, COUNT(*) AS type FROM `tasks` WHERE user_id = :id AND delete_status= 0 GROUP BY is_done ";
          $stmt = $this->connect()->prepare($query);
-        $stmt->execute(array($start,$end));
+         $stmt->bindParam(":id", $user_id);
+        $stmt->execute();
          return $stmt->fetchAll();
         $stmt = null;
     }
