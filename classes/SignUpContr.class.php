@@ -22,13 +22,13 @@ class SignUpContr extends SignUp
         $this->signupErrors["empty_input"] = "Fill in all fields!";
     }
     if ($this->emailExists($this->email) === 1) {
-        $this->signupErrors["email_used"] = " email already taken!";
+        $this->signupErrors["email_used"] = "Invalid Input";
     }
     if ($this->userExists($this->username)) {
-        $this->signupErrors["username_taken"] = "username already taken!";
+        $this->signupErrors["username_taken"] = "Username already taken!";
     }
     if ($this->pwdMatch() == false) {
-        $this->signupErrors["password_mismatch"] = "password mismatch";
+        $this->signupErrors["password_mismatch"] = "Password Mismatch";
     }
     if ($this->is_email_invalid() == true) {
         $this->signupErrors["invalid_email"] = "Invalid email used!";

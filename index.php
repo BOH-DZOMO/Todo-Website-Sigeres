@@ -29,12 +29,15 @@ $view = new TaskView();
                </div>
                <div id="error_log">
                <?php
-               if (isset($_SESSION['errors_signin'])) {
+               if (isset($_SESSION['errors_signin']) && $_SESSION["errors_signin"] !== null) {
                   $data = $_SESSION["errors_signin"];
                   $_SESSION["errors_signin"] = null;
+                  echo "<ul>";
                   foreach ($data as $key => $value) {
-                  echo "<span class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</span> <br>";
-               }}
+                  echo "<li class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</li>";
+                  }
+                  echo "</ul>";
+               }
                  ?>
                </div>
                <div class="d-grid gap-2">
@@ -79,14 +82,17 @@ $view = new TaskView();
                <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="" required>
             </div>
             <div id="error_log">
-                           <?php
-               if (isset($_SESSION['errors_signup'])) {
-                  $data = $_SESSION["errors_signup"];
-                  $_SESSION["errors_signin"] = null;
-                  foreach ($data as $key => $value) {
-                  echo "<span class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</span> <br>";
-               }}
-                 ?>
+                  <?php
+                  if (isset($_SESSION['errors_signup'])  && $_SESSION["errors_signup"] !== null) {
+                     $data = $_SESSION["errors_signup"];
+                     $_SESSION["errors_signup"] = null;
+                     echo "<ul>";
+                     foreach ($data as $key => $value) {
+                     echo "<li class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</li>";
+                     }
+                     echo "</ul>";
+                  }
+                  ?>
             </div>
             <div class="d-grid gap-2">
                <button class="btn btn-primary" style="font-weight: 500;" name="signUp" type="submit">Sign Up</button>
@@ -109,13 +115,16 @@ $view = new TaskView();
                   <input type="password" class="form-control" name="password" id="password" placeholder="" required>
                </div>
                <div id="error_log">
-                              <?php
-               if (isset($_SESSION['errors_signin'])) {
+                   <?php
+               if (isset($_SESSION['errors_signin']) && $_SESSION["errors_signin"] !== null) {
                   $data = $_SESSION["errors_signin"];
                   $_SESSION["errors_signin"] = null;
+                  echo "<ul>";
                   foreach ($data as $key => $value) {
-                  echo "<span class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</span> <br>";
-               }}
+                  echo "<li class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</li>";
+                  }
+                  echo "</ul>";
+               }
                  ?>
                </div>
                <div class="d-grid gap-2">
@@ -131,11 +140,9 @@ $view = new TaskView();
       if (signupP == "failed") {
          
          signUpBtn.click();
-         console.log(signupP);
       }
       else if (signipP == "failed") {
          onsole.log(name);
-         signInBtn.click(signipP);
       }
    </script>
 </body>

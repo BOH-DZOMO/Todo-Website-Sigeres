@@ -16,11 +16,9 @@ class SignInContr extends SignIn
         if ($this->emptyInput()) {
             $this->signInErrors["empty_input"] = "Fill in all fields!";
         }
-        if ($this->get_userPassword($this->email) == false) {
-            $this->signInErrors["invalid_username"] = "invalid username--";
-        } elseif (!password_verify($this->pwd, $this->get_userPassword($this->email)["password"])) {
-            $this->signInErrors["invalid_password"] = "invalid password--";
-        }
+        if ($this->get_userPassword($this->email) == false || !password_verify($this->pwd, $this->get_userPassword($this->email)["password"])) {
+            $this->signInErrors["invalid_username"] = "Invalid Credentials";
+        } 
 
         //review
         if ($this->signInErrors) {
