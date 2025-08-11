@@ -1,5 +1,5 @@
 <?php
-class SignIn extends dbh{
+class SignIn extends Dbh{
      protected function get_userPassword(string $email) {
         $query = "SELECT password FROM users WHERE email = :email";
         $stmt = $this->connect()->prepare($query);

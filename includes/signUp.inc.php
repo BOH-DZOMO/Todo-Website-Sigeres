@@ -11,7 +11,7 @@ if (isset($_POST["signUp"])) {
 
     if (allFieldsFilled([$username, $pwd, $pwd_confirm, $email])) {
         
-        $signup = new SignupContr(escape($username), escape($pwd), escape($pwd_confirm), escape($email));
+        $signup = new SignUpContr(escape($username), escape($pwd), escape($pwd_confirm), escape($email));
         $signup->signupUser();
     }
 

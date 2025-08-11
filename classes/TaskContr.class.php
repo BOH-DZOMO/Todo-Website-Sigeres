@@ -1,5 +1,5 @@
 <?php
-class taskContr extends Task{
+class TaskContr extends Task{
 
     public function create($user_id,$title,$description,$deadline){
         if (empty($deadline)) {

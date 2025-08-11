@@ -12,7 +12,7 @@ if (isset($_POST["create_task"])) {
 
 
     if (allFieldsFilled([$title, $description])) {
-        $create_task = new taskContr();
+        $create_task = new TaskContr();
         $create_task->create($_SESSION["user_id"], escape($title), escape($description), escape($deadline));
     } else {
         header('location:../pages/create_task.php?error=create_task');
@@ -25,7 +25,7 @@ if (isset($_POST["create_task"])) {
     $task_id = $_POST["task_id"];
 
     if (allFieldsFilled([$title, $description])) {
-        $create_task = new taskContr();
+        $create_task = new TaskContr();
         $create_task->update(escape($task_id), escape($title), escape($description), escape($deadline));
     } else {
         header('location:../pages/edit-task.php?error=update_task');
@@ -35,7 +35,7 @@ if (isset($_POST["create_task"])) {
 
 elseif (isset($_POST["delete_task"])) {
      if (allFieldsFilled([$_POST["task_id"]])) {
-        $delete = new taskContr();
+        $delete = new TaskContr();
         $delete->delete(escape($_POST["task_id"]));
     }
     else {
@@ -44,7 +44,7 @@ elseif (isset($_POST["delete_task"])) {
 }
 elseif (isset($_POST["complete_task"])) {
      if (allFieldsFilled([$_POST["task_id"]])) {
-        $complete = new taskContr();
+        $complete = new TaskContr();
         $complete->complete(escape($_POST["task_id"]));   
     }
     else {
@@ -55,7 +55,7 @@ elseif (isset($_POST["complete_task"])) {
 //     $startDate = $_POST["first_date"];
 //     $endDate = $_POST["last_date"];
 //      if (allFieldsFilled([$startDate,$endDate])) {
-//         $filter = new taskContr();
+//         $filter = new TaskContr();
 //         $filter->(escape($startDate),escape($endDate));   
 //     }
 //     else {
