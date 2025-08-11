@@ -37,7 +37,7 @@ class SignUpContr extends SignUp
 
     if ($this->signupErrors){
         $_SESSION["errors_signup"] = $this->signupErrors;
-        header("location: ../index.php");
+        header("location: ../index.php?signup=failed");
         exit();
     }
 

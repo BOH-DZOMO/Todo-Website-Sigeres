@@ -1,6 +1,9 @@
 <?php
 $title = "Todo Site";
 require_once("./pages/partials/header.par.php");
+require_once "./includes/autoloader.inc.php";
+require_once "./includes/config.session.inc.php";
+$view = new TaskView();
 ?>
 <title>Todo Site</title>
 <link rel="stylesheet" href="./assets/css/main.css">
@@ -18,14 +21,21 @@ require_once("./pages/partials/header.par.php");
             <form action="./includes/signIn.inc.php" method="post">
                <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
                </div>
                <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="" required>
                </div>
                <div id="error_log">
-
+               <?php
+               if (isset($_SESSION['errors_signin'])) {
+                  $data = $_SESSION["errors_signin"];
+                  $_SESSION["errors_signin"] = null;
+                  foreach ($data as $key => $value) {
+                  echo "<span class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</span> <br>";
+               }}
+                 ?>
                </div>
                <div class="d-grid gap-2">
                   <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="signIn">Sign In</button>
@@ -40,22 +50,8 @@ require_once("./pages/partials/header.par.php");
       let signInBtn = document.getElementById("signin");
       let signUpBtn = document.getElementById("signup");
       let content = document.getElementById("content");
-      
-            //    content.innerHTML = `
-            //    <form action="./includes/signIn.inc.php" method="post">
-            //    <div class="mb-3">
-            //       <label for="email" class="form-label">Email</label>
-            //       <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
-            //    </div>
-            //    <div class="mb-3">
-            //       <label for="password" class="form-label">Password</label>
-            //       <input type="password" class="form-control" name="password" id="password" placeholder="">
-            //    </div>
-            //    <div class="d-grid gap-2">
-            //       <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="signIn">Sign In</button>
-            //    </div>
-            // </form>`
       let error_log = document.getElementById("error_log");
+
 
       signInBtn.classList.add("focus");
 
@@ -65,22 +61,32 @@ require_once("./pages/partials/header.par.php");
          signUpBtn.className ="focus"
          signInBtn.className = "non-focus"
 
-         content.innerHTML = `<form action="./includes/signUp.inc.php" method="post">
+         content.innerHTML = `<form action="./includes/signUp.inc.php" method="post" id="signupForm">
                <div class="mb-3">
-               <label for="name" class="form-label">Name & Surname</label>
-               <input type="text" class="form-control" name="username" id="email" placeholder="">
+               <label for="username" class="form-label">Name & Surname</label>
+               <input type="text" class="form-control" name="username" id="username" placeholder="" required>
             </div>
             <div class="mb-3">
-               <label for="name" class="form-label">Email</label>
-               <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+               <label for="email" class="form-label">Email</label>
+               <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
             </div>
             <div class="mb-3">
-               <label for="password" class="form-label">Password</label>
-               <input type="password" class="form-control" name="password" id="password" placeholder="">
+               <label for="password_confirm" class="form-label">Password</label>
+               <input type="password" class="form-control" name="password" id="password" placeholder="" required>
             </div>
             <div class="mb-3">
                <label for="password" class="form-label">Confirm Password</label>
-               <input type="password" class="form-control" name="password_confirm" id="password" placeholder="">
+               <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="" required>
+            </div>
+            <div id="error_log">
+                           <?php
+               if (isset($_SESSION['errors_signup'])) {
+                  $data = $_SESSION["errors_signup"];
+                  $_SESSION["errors_signin"] = null;
+                  foreach ($data as $key => $value) {
+                  echo "<span class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</span> <br>";
+               }}
+                 ?>
             </div>
             <div class="d-grid gap-2">
                <button class="btn btn-primary" style="font-weight: 500;" name="signUp" type="submit">Sign Up</button>
@@ -96,17 +102,41 @@ require_once("./pages/partials/header.par.php");
                <form action="./includes/signIn.inc.php" method="post">
                <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
                </div>
                <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+               </div>
+               <div id="error_log">
+                              <?php
+               if (isset($_SESSION['errors_signin'])) {
+                  $data = $_SESSION["errors_signin"];
+                  $_SESSION["errors_signin"] = null;
+                  foreach ($data as $key => $value) {
+                  echo "<span class='errors' style='font-size: 15px;color: red; margin-bottom: 5px'>$value</span> <br>";
+               }}
+                 ?>
                </div>
                <div class="d-grid gap-2">
                   <button class="btn btn-primary" style="font-weight: 500;" type="submit" name="signIn">Sign In</button>
                </div>
             </form>`
       })
+      
+      let url = new URLSearchParams(window.location.search)
+      let signupP = url.get('signup');
+      let signipP = url.get('signin');
+      
+      if (signupP == "failed") {
+         
+         signUpBtn.click();
+         console.log(signupP);
+      }
+      else if (signipP == "failed") {
+         onsole.log(name);
+         signInBtn.click(signipP);
+      }
    </script>
 </body>
 

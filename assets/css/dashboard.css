@@ -114,12 +114,21 @@ section h4{
     align-items: center;
 }
 .task-card{
-     min-width: 20rem;
+min-width: 25em;
   height: fit-content;
   background: white;
   padding: 1rem 1.5rem 1.5rem 1.5rem;
   border-radius: 15px;
     margin-top: 1rem;
+}
+.task_info{
+    text-align: center;
+    margin: 0;
+
+}
+.task_info div{
+    margin: 0;
+
 }
 
 .form-label{

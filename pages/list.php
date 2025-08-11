@@ -39,14 +39,6 @@ require_once("./partials/header2.par.php");
             </ul>
         </nav>
         <div class="container">
-            <?php
-            if (isset($_GET["task"]) && $_GET["task"] == "success") {
-                echo '<div class="alert alert-success" role="alert">
-  Task created succesfully
-</div>
-';
-            }
-            ?>
             <h4>List of Tasks</h4>
             <section>
                 <form action="./list.php" method="post" class="">

@@ -24,8 +24,8 @@ class SignInContr extends SignIn
 
         //review
         if ($this->signInErrors) {
-            $_SESSION["errors_login"] = $this->signInErrors;
-            header("location: ../index.php");
+            $_SESSION["errors_signin"] = $this->signInErrors;
+            header("location: ../index.php?signin=failed");
 
             exit();
         }
@@ -34,7 +34,7 @@ class SignInContr extends SignIn
         $result = $this->get_userData($this->email);
         $_SESSION["user_id"] = $result["id"];
         $_SESSION["user_username"] = htmlspecialchars($result["username"]);
-        header("location: ../pages/dashboard.php?login=success");
+        header("location: ../pages/dashboard.php?signin=success");
         exit();
     }
 

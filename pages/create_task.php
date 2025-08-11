@@ -21,6 +21,16 @@ if (!isset($_SESSION["user_id"])) {
                 <li><a href="../includes/logout.inc.php" class="links">Log Out</a></li>
             </ul>
         </nav>
+        <div class="task_info">
+            <?php
+            if (isset($_GET["task"]) && $_GET["task"] == "success") {
+                echo '<div class="alert alert-success" role="alert">
+  Task created succesfully
+</div>
+';
+            }
+            ?>
+        </div>
         <div class="card-container">
             <div class="task-card">
                 <h4>Create a new Task</h4>
@@ -58,6 +68,11 @@ if (!isset($_SESSION["user_id"])) {
     <script src="../assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     <script src="../assets/Vendor/fontawesome/js/all.min.js"></script>
     <script>
+        setTimeout(()=>{
+            console.log("tried--");
+            
+            document.querySelector(".task_info").innerHTML="";
+        },5000)
     </script>
 </body>
 

@@ -62,3 +62,7 @@ hr {
 .form-label{
     font-weight: 500;
 }
+.errors{
+  font-size: 5px;
+  color: red;
+}
