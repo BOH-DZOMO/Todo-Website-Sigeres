@@ -142,7 +142,7 @@ $view = new TaskView();
          signUpBtn.click();
       }
       else if (signipP == "failed") {
-         onsole.log(name);
+         signInBtn.click();
       }
    </script>
 </body>
