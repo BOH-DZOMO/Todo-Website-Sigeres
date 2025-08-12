@@ -3,12 +3,12 @@ require_once "config.session.inc.php";
 include_once "autoloader.inc.php";
 if (isset($_POST["signIn"])) {
     //grabbing data
-    $username = $_POST["email"];
+    $email = $_POST["email"];
     $pwd = $_POST["password"];
 
-    if (allFieldsFilled([$username,$pwd])) {
+    if (allFieldsFilled([$email,$pwd])) {
         
-        $login = new SignInContr(escape($username), escape($pwd));
+        $login = new SignInContr(escape($email), escape($pwd));
         $login->loginUser();   
     }
 
